@@ -1,94 +1,57 @@
-// MentorshipMatch.java
 package com.example.qard_hasan_for_education.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class MentorshipMatch {
-    @JsonProperty("matchId")
     private String matchId;
-
-    @JsonProperty("mentorId")
     private String mentorId;
-
-    @JsonProperty("menteeId")
     private String menteeId;
-
-    @JsonProperty("helpType")
-    private HelpType helpType;
-
-    @JsonProperty("status")
-    private MentorshipStatus status;
-
-    @JsonProperty("matchedAt")
+    private MentorshipMatchStatus status;
     private LocalDateTime matchedAt;
-
-    @JsonProperty("lastInteractionAt")
-    private LocalDateTime lastInteractionAt;
-
-    @JsonProperty("totalSessions")
-    private Integer totalSessions;
-
-    @JsonProperty("menteeRating")
-    private Integer menteeRating; // 1-5 stars
-
-    @JsonProperty("mentorRating")
-    private Integer mentorRating; // 1-5 stars
-
-    @JsonProperty("notes")
+    private LocalDateTime completedAt;
+    private LocalDateTime lastSessionAt;
+    private Integer sessionCount;
+    private Double menteeRating; // 1.0 - 5.0
+    private Double mentorRating; // 1.0 - 5.0
+    private String menteeFeedback;
+    private String mentorFeedback;
+    private List<HelpType> focusAreas;
     private String notes;
+    private String completionReason;
 
-    // Constructors
+    // Default constructor
     public MentorshipMatch() {}
 
-    public MentorshipMatch(String mentorId, String menteeId, HelpType helpType) {
-        this.matchId = generateMatchId();
-        this.mentorId = mentorId;
-        this.menteeId = menteeId;
-        this.helpType = helpType;
-        this.status = MentorshipStatus.ACTIVE;
-        this.matchedAt = LocalDateTime.now();
-        this.lastInteractionAt = LocalDateTime.now();
-        this.totalSessions = 0;
-    }
-
-    // Getters and Setters
+    // Getters and setters
     public String getMatchId() { return matchId; }
     public void setMatchId(String matchId) { this.matchId = matchId; }
-
     public String getMentorId() { return mentorId; }
     public void setMentorId(String mentorId) { this.mentorId = mentorId; }
-
     public String getMenteeId() { return menteeId; }
     public void setMenteeId(String menteeId) { this.menteeId = menteeId; }
-
-    public HelpType getHelpType() { return helpType; }
-    public void setHelpType(HelpType helpType) { this.helpType = helpType; }
-
-    public MentorshipStatus getStatus() { return status; }
-    public void setStatus(MentorshipStatus status) { this.status = status; }
-
+    public MentorshipMatchStatus getStatus() { return status; }
+    public void setStatus(MentorshipMatchStatus status) { this.status = status; }
     public LocalDateTime getMatchedAt() { return matchedAt; }
     public void setMatchedAt(LocalDateTime matchedAt) { this.matchedAt = matchedAt; }
-
-    public LocalDateTime getLastInteractionAt() { return lastInteractionAt; }
-    public void setLastInteractionAt(LocalDateTime lastInteractionAt) { this.lastInteractionAt = lastInteractionAt; }
-
-    public Integer getTotalSessions() { return totalSessions; }
-    public void setTotalSessions(Integer totalSessions) { this.totalSessions = totalSessions; }
-
-    public Integer getMenteeRating() { return menteeRating; }
-    public void setMenteeRating(Integer menteeRating) { this.menteeRating = menteeRating; }
-
-    public Integer getMentorRating() { return mentorRating; }
-    public void setMentorRating(Integer mentorRating) { this.mentorRating = mentorRating; }
-
+    public LocalDateTime getCompletedAt() { return completedAt; }
+    public void setCompletedAt(LocalDateTime completedAt) { this.completedAt = completedAt; }
+    public LocalDateTime getLastSessionAt() { return lastSessionAt; }
+    public void setLastSessionAt(LocalDateTime lastSessionAt) { this.lastSessionAt = lastSessionAt; }
+    public Integer getSessionCount() { return sessionCount; }
+    public void setSessionCount(Integer sessionCount) { this.sessionCount = sessionCount; }
+    public Double getMenteeRating() { return menteeRating; }
+    public void setMenteeRating(Double menteeRating) { this.menteeRating = menteeRating; }
+    public Double getMentorRating() { return mentorRating; }
+    public void setMentorRating(Double mentorRating) { this.mentorRating = mentorRating; }
+    public String getMenteeFeedback() { return menteeFeedback; }
+    public void setMenteeFeedback(String menteeFeedback) { this.menteeFeedback = menteeFeedback; }
+    public String getMentorFeedback() { return mentorFeedback; }
+    public void setMentorFeedback(String mentorFeedback) { this.mentorFeedback = mentorFeedback; }
+    public List<HelpType> getFocusAreas() { return focusAreas; }
+    public void setFocusAreas(List<HelpType> focusAreas) { this.focusAreas = focusAreas; }
     public String getNotes() { return notes; }
     public void setNotes(String notes) { this.notes = notes; }
-
-    private String generateMatchId() {
-        return "MATCH_" + System.currentTimeMillis() + "_" +
-                java.util.UUID.randomUUID().toString().substring(0, 6).toUpperCase();
-    }
+    public String getCompletionReason() { return completionReason; }
+    public void setCompletionReason(String completionReason) { this.completionReason = completionReason; }
 }
-
